@@ -2,8 +2,12 @@
 
 # 1.1 Arrow Functions
 
+<br>
+<br>
 
-example 1)
+## example 1)
+
+<br>
 
 ```
 function sayHello(name) 
@@ -23,7 +27,9 @@ console.log(nicolas);
 <br>
 <br>
 
-example 2)
+## example 2)
+
+<br>
 
 ```
 const sayHello = (name) => "Hello" + name;
@@ -40,7 +46,9 @@ arrow function을 사용 할 때에는 const를 하고 arrow function을 안에 
 <br>
 <br>
 
-example 3)
+## example 3)
+
+<br>
 
 ```
 function sayHello(name = "Nicolas") {
@@ -60,7 +68,9 @@ console.log(nicolas);
 <br>
 <br>
 
-example 4)
+## example 4)
+
+<br>
 
 ```
 const sayHello = (name = "Human") => "Hello " + name;
@@ -78,9 +88,11 @@ Anonymous function: 익명 함수는 말 그대로 함수의 이름이 없는 �
 <br>
 <br>
 
-example 5)
+## example 5)
 
-5-1) arrow function 이벤트 만들기
+<br>
+
+### 5-1) arrow function 이벤트 만들기
 
 ```
 const button = document.querySelector("button");
@@ -92,8 +104,9 @@ button.addEventListener("click", handleCLick);
 ```
 
 <br>
+<br>
 
-5-2) arrow function 이벤트 만들기
+### 5-2) arrow function 이벤트 만들기
 
 arrow function을 통하여 5-1 과 같은 결과를 도출하면서 코드를 더욱 간단하고 보기 좋게 만들 수 있다.
 
@@ -108,7 +121,7 @@ button.addEventListener("click", (event) => console.log(event));
 <br>
 <br>
 
-example 6) - 1.2 Template Literals : 백틱 활용
+## example 6) - 1.2 Template Literals : 백틱 활용
 
 ```
 const sayHello = (name = "human") => `Hello ${name}`;
@@ -127,6 +140,8 @@ console.log(Jane);
 
 # 1.3 Object Destructuring
 
+<br>
+
 ```
 const human = {
   name: "Jane",
@@ -143,7 +158,7 @@ const human = {
 // const lastName = human.lastName;
 // const difName = human.nationality;
 // const dinner = human.favFood.breakfast;
-// 위와 같이 작성할 때와 동일하게 출력 가능하다.
+// ** 위와 같이 작성 할 때와 동일하게 출력 가능하다.
 
 const { name, lastName, nationality: difName, favFood: {dinner, breakfast, lunch} } = human; 
 
@@ -152,3 +167,60 @@ console.log(name, lastName, difName, human.favFood.dinner)
 
 // [LOG] Jane Doe Korea Pasta
 ```
+
+<br>
+<br>
+<br>
+<br>
+
+# 1.4 Spread Operater
+
+<br>
+
+Spread Operator는 배열로부터 아이템을 가져와서 Unpack 시켜준다.
+
+두 개의 Object를 병합한다던지 어떤 대상의 복사본을 만들거나, 어떤 콘텐츠를 다른 배열에 넣고싶을 때 등등 유용하게 사용할 수 있다.
+
+```
+const days = ["Mon", "Tues", "Wed"];
+const otherDays = ["Thu", "Fri", "Sat"];
+
+let allDays = [...days, ...otherDays, "Sun"];
+
+console.log(allDays);
+
+ [LOG] let allDays = [days, otherDays, "Sun"]; -> (3) [Array(3), Array(3), "Sun"]
+// [LOG] let allDays = [...days, ...otherDays, "Sun"]; -> (7) ["Mon", "Tues", "Wed", "Thu", "Fri", "Sat", "Sun"]
+```
+
+Spread Operator를 사용하면 두 배열의 콘텐츠들을 하나의 배열로 묶어주게 된다.
+
+<br>
+
+```
+const ob = {
+  first: "hi",
+  second: "hello"
+}
+
+const ab = {
+  third: "bye"
+}
+
+const mix = { ...ob, ...ab }
+
+console.log(mix)
+
+//[LOG] const mix = { ob, ab } -> {ob: Object, ab: Object} 
+//[LOG] const mix = { ...ob, ...ab } -> {first: "hi", second: "hello", third: "bye"}
+```
+
+Object도 로그를 보면 Spread Operator를 사용하고 나면 두 개의 Object 콘텐츠를 가지게 된다.
+
+<br>
+
+```
+const test = (something, args) => console.log(...args)
+```
+
+Spread Operator는 위와 같이 Argument, function에서도 잘 작동된다.
